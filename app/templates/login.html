@@ -2,40 +2,29 @@
 
 {%block title%}{{super()}} | Login{% endblock %}
 
-{% block css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css')}}"
-{% endblock %}
-
 {% block content %}
 
-<div class="container">   
-    <div class="wrapper fadeInDown">
-        <div id="formContent">
-            <!-- Tabs Titles -->
 
-            <!-- Icon 
-            <div class="fadeIn first">
-                <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
-            </div>
-            -->
-
-            <!-- Login Form -->
-            <form>
-                <label for="login">Username
-                    <input type="text" id="login" class="fadeIn second" name="login" placeholder="username">
-                </label>
-                <label for="password">
-                    <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-                </label>
-                <input type="submit" class="fadeIn fourth" value="Log In">
-            </form>
+<form method="POST" action="">
+    {{ form.csrf_token }}
+    <div class="container col-md-6">
+        <h2>Login</h2>
+        <div class="form-group" >
+            <label>Username                
+                {{ form.username(class="form-control", placeholder="@username" )}}
+            </label>
         </div>
-    </div>
-
-</div>
-
-
-
+        <div class="form-group">
+            <label>Password
+            {{ form.password(class="form-control", placeholder="password")}}
+            </label>
+        </div>
+        <div class="checkbox">
+            {{ form.remember_me}}
+            Remember me
+        </div>
+        <input type="submit" value="submit">
+  </form>
 
 
 {% endblock%}
