@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{%block title%}{{super()}} | Login{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css')}}"
+{% endblock %}
+
+{% block content %}
+
+<div class="container">   
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- Tabs Titles -->
+
+            <!-- Icon 
+            <div class="fadeIn first">
+                <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+            </div>
+            -->
+
+            <!-- Login Form -->
+            <form>
+                <label for="login">Username
+                    <input type="text" id="login" class="fadeIn second" name="login" placeholder="username">
+                </label>
+                <label for="password">
+                    <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+                </label>
+                <input type="submit" class="fadeIn fourth" value="Log In">
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+{% endblock%}
