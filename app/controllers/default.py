@@ -42,7 +42,6 @@ def logout():
 @login_required
 def upload_file():
     form = PostForm()  
-
     if request.method == 'POST':
         # check if the post request has the file part
         if 'image' not in request.files:
@@ -80,4 +79,4 @@ def deleted(id=None):
     element = Post.query.get(id)
     db.session.delete(element)
     db.session.commit()
-    return redirect('/')
+    return redirect('/delete/')
