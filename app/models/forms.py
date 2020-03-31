@@ -7,3 +7,6 @@ class LoginForm(FlaskForm):
     password = PasswordField('password', [validators.DataRequired()])
     remember_me = BooleanField('remember_me')
 
+class PostForm(FlaskForm):
+    image_path = StringField('image', [validators.DataRequired()])
+    local = StringField('local', [validators.DataRequired()])

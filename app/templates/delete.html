@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{%block title%}{{super()}} | Delete{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Delete</h1> 
+    {% for item in posts %}
+    <div class="card col-md-4 inline-block">
+        <div class="image">
+            <img src="/static/images/{{ item.image_path }}" width="150px" height="150px">
+        </div>
+        <div class="content">
+            <p>Local: {{ item.content }}</p>
+        </div>
+    </div>
+    <a href="{{url_for('deleted')}}{{item.id}}" >Delete</a>
+    {% endfor %}
+</div>
+
+
+{% endblock%}
