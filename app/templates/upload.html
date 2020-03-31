@@ -1,5 +1,22 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{%block title%}{{super()}} | Upload{% endblock %}
 
+{% block content %}
+<form method="POST" enctype="multipart/form-data" action="{{ url_for('upload_file') }}">
+    <div class="container col-md-6">
+        <h2>Upload</h2>
+        <div class="form-group">
+            <label for="image">Escolha o arquivo: 
+                <input type="file" name="image">
+            </label>
+        </div>
+        {{ form.csrf_token }}
+        <div class="form-group">
+            <label>Local
+            {{ form.local(class="form-control", placeholder="local onde está o objeto")}}
+            </label>
+        </div>
+        <input type="submit" value="send">
+  </form>
 {% endblock %}

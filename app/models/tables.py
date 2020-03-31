@@ -33,10 +33,10 @@ class Post(db.Model):
     content = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    def __init__(self, image_path, content, user_id):
+    def __init__(self, image_path, content):
         self.image_path = image_path
         self.content = content
-        self.user_id = user_id
+        
     
     def __repr__(self):
         return "<User %r>" % self.post
