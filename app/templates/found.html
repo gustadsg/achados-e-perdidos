@@ -1,24 +1,32 @@
 {% extends 'base.html' %}
 
-{%block title%}{{super()}} | Delete{% endblock %}
+{%block title%}{{super()}} | Found{% endblock %}
 
 {% block content %}
 
 <div class="container">
-    <h1>Delete</h1> 
-    {% for item in posts %}
+    <h1>Manage</h1> 
+
+    {% if not found %}
+    <div class="card">
+        <h2>Ainda não há objetos perdidos postados</h2>
+    </div>
+    {% else %}
+
+    {% for item in found %}
     <div class="card col-md-4 " style="display: inline-block;">
         <div class="image">
             <img src="/static/images/{{ item.image_path }}" width="150px" height="150px">
         </div>
         <div class="content">
             <p>Local: {{ item.content }}</p>
+            <p>Dono: {{ item.name_owner }}</p>
+            <p>CPF do dono: {{ item.cpf_owner }}</p>
         </div>
-        <a href="{{url_for('deleted')}}{{item.id}}" >Delete</a>
     </div>
     
     {% endfor %}
+    {% endif %}
 </div>
-
 
 {% endblock%}

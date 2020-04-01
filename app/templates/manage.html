@@ -1,26 +1,30 @@
 {% extends 'base.html' %}
 
+{%block title%}{{super()}} | Manage{% endblock %}
+
 {% block content %}
 
 <div class="container">
-    <h1>Pagina inicial</h1> 
-    {% if posts == [] %}
-    <div class="card">
-        <h2>Ainda não há objetos perdidos postados</h2>
+    <h1>Manage</h1> 
+    {% if posts ==[] %}
+    <div class="card col-md">
+        <h2>Não há postagens para serem gerenciadas</h2>
     </div>
     {% else %}
     {% for item in posts %}
-    <div class="card col-md-4 inline-block" style="display: inline-block;">
+    <div class="card col-md-4 " style="display: inline-block;">
         <div class="image">
             <img src="/static/images/{{ item.image_path }}" width="150px" height="150px">
         </div>
         <div class="content">
             <p>Local: {{ item.content }}</p>
         </div>
+        <a href="{{url_for('delete')}}{{item.id}}" >Delete</a>
+        <a href="{{url_for('find')}}{{item.id}}">Find</a>
     </div>
+    
     {% endfor %}
     {% endif %}
 </div>
-
 
 {% endblock%}

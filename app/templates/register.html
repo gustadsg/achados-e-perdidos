@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{%block title%}{{super()}} | Register{% endblock %}
+
+{% block content %}
+
+<form method="POST" action="">
+    {{ form.csrf_token }}
+    <div class="container col-md-6">
+        <h2>Register</h2>
+        <div class="form-group" >
+            <label>Username                
+                {{ form.username(class="form-control", placeholder="@username" )}}
+            </label>
+        </div>
+        <div class="form-group">
+            <label>Password
+            {{ form.password(class="form-control", placeholder="password")}}
+            </label>
+        </div>
+        <input type="submit" value="submit">
+  </form>
+
+{% endblock%}

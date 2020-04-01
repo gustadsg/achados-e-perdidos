@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="POST" action="">
+    {{ form.csrf_token }}
+    <div class="container col-md-6">
+        <h2>Marcar como encontrado</h2>
+        <div class="form-group" >
+            <label>Nome do dono:                
+                {{ form.name_owner(class="form-control", placeholder="name" )}}
+            </label>
+        </div>
+        <div class="form-group">
+            <label>CPF:
+            {{ form.cpf_owner(class="form-control", placeholder="CPF")}}
+            </label>
+        </div>
+        <input type="submit" value="submit">
+  </form>
+
+
+{% endblock%}

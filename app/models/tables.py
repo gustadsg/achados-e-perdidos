@@ -11,9 +11,9 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String, unique=True)
     password = db.Column(db.String)
 
-    def __init__(self, username, password, name, email):
+    def __init__(self, username, password):
         self.username = username
-        self.password = generate_password_hash(password)
+        self.password = password
     
     def verify_password(self, pwd):
         return check_password_hash(self.password, pwd)
@@ -39,4 +39,23 @@ class Post(db.Model):
         
     
     def __repr__(self):
-        return "<User %r>" % self.post
+        return "<Local: %r>" % self.content
+
+class Found(db.Model):
+    __tablename__ = "found"
+
+    id = db.Column(db.Integer, primary_key=True)
+    image_path = db.Column(db.String, unique=True)
+    content = db.Column(db.String)
+    name_owner = db.Column(db.String)
+    cpf_owner = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    def __init__(self, image_path, content, name_owner, cpf_owner):
+        self.image_path = image_path
+        self.content = content
+        self.name_owner = name_owner
+        self.cpf_owner = cpf_owner
+        
+    def __repr__(self):
+        return "<Owner: %r>" % self.name_owner
