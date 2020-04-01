@@ -107,6 +107,7 @@ def find(id=None):
     return render_template('find.html', found=found, form=form)
 
 @app.route('/found/')
+@login_required
 def found():
     found = Found.query.all()
     return render_template('found.html', found = found)
