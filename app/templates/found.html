@@ -2,24 +2,24 @@
 
 {%block title%}{{super()}} | Found{% endblock %}
 
+{% block logout %}<a class="btn btn-danger" href="{{url_for('logout')}}">Logout</a>{% endblock %}
+
 {% block content %}
 
 <div class="container">
-    <h1>Itens Encontrados</h1> 
+    <h1>Objetos Devolvidos</h1> 
 
     {% if not found %}
-    <div class="card">
-        <h2>Ainda não há objetos perdidos postados</h2>
+    <div class="card" style="background-color: rgba( 231,95,95, 1);">
+        <h3>Ainda Não Há Objetos Devolvidos</h3>
     </div>
     {% else %}
 
     {% for item in found %}
-    <div class="card col-md-4 " style="display: inline-block;">
-        <div class="image">
-            <img src="/static/images/{{ item.image_path }}" width="150px" height="150px">
-        </div>
-        <div class="content">
-            <p>Local: {{ item.content }}</p>
+    <div class="card d-inline-block" style="width: 17rem">
+        <img class="card-img-top" src="/static/images/{{ item.image_path }}" >
+        <div class="card-body">
+            <p class="card-text"><img src="/static/svg/location-pin.svg" width="18px" alt="Local"> {{ item.content }}</p>
             <p>Dono: {{ item.name_owner }}</p>
             <p>CPF do dono: {{ item.cpf_owner }}</p>
         </div>
@@ -28,5 +28,4 @@
     {% endfor %}
     {% endif %}
 </div>
-
 {% endblock%}

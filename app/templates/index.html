@@ -5,22 +5,19 @@
 <div class="container">
     <h1>Pagina inicial</h1> 
     {% if posts == [] %}
-    <div class="card">
-        <h2>Ainda não há objetos perdidos postados</h2>
+    <div class="card" style="background-color: rgba( 231,95,95, 1);">
+        <h3>Ainda Não Há Objetos Perdidos Postados</h3>
     </div>
     {% else %}
     {% for item in posts %}
-    <div class="card col-md-4 inline-block" style="display: inline-block;">
-        <div class="image">
-            <img src="/static/images/{{ item.image_path }}" width="150px" height="150px">
-        </div>
-        <div class="content">
-            <p>Local: {{ item.content }}</p>
+    <div class="card d-inline-block" style="width: 17rem">
+        <img class="card-img-top" src="/static/images/{{ item.image_path }}" >
+        <div class="card-body">
+            <p class="card-text"><img src="/static/svg/location-pin.svg" width="18px" alt="Local"> {{ item.content }}</p>
         </div>
     </div>
     {% endfor %}
     {% endif %}
 </div>
-
 
 {% endblock%}

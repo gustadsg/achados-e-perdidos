@@ -7,6 +7,7 @@
 
         <!--Page CSS-->
         {% block css %}{% endblock %}
+
         <!--bootstrap-->
         <link href="{{ url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet" id="bootstrap-css">
         <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
@@ -14,12 +15,15 @@
         <!--jQuery-->
         <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
 
+        <!--Favicon-->
+        <link rel="shortcut icon" href="{{url_for('static', filename='ico/icone.ico')}}" />
+
         <title>{% block title %}Achei{% endblock %}</title>
     </head>
     <body>
         <header>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="{{ url_for('index') }}">Achei!</a>
+                <a class="navbar-brand" href="{{ url_for('index') }}"><img src="{{url_for('static', filename='images/achei_logo.png')}}" style="width: 70px;"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
@@ -30,14 +34,14 @@
                       <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                      <a class="nav-link" href="{{ url_for('master') }}">Administrar</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="{{ url_for('master') }}">Master</a>
-                    </li>
+                    
                   </ul>
                 </div>
+                {% block logout %} {% endblock %}
             </nav>
+            
         </header>
     {% block content %}
     {% endblock %}

@@ -2,6 +2,8 @@
 
 {%block title%}{{super()}} | Upload{% endblock %}
 
+{% block logout %}<a class="btn btn-danger" href="{{url_for('logout')}}">Logout</a>{% endblock %}
+
 {% block content %}
 <form method="POST" enctype="multipart/form-data" action="{{ url_for('upload_file') }}">
     <div class="container col-md-6">
@@ -17,6 +19,6 @@
             {{ form.local(class="form-control", placeholder="local onde está o objeto")}}
             </label>
         </div>
-        <input type="submit" value="send">
+        <input class="btn btn-primary" type="submit" value="send">
   </form>
 {% endblock %}

@@ -2,10 +2,15 @@
 
 {%block title%}{{super()}} | Master{% endblock %}
 
+{% block logout %}<a class="btn btn-danger" href="{{url_for('logout')}}">Logout</a>{% endblock %}
+
 {% block content %}
-<a href="{{url_for('upload_file')}}">Upload</a>
-<a href="{{url_for('manage')}}">Manage</a>
-<a href="{{url_for('found')}}">Found itens</a>
-<a href="{{url_for('register')}}">Register New User</a>
-<a href="{{url_for('logout')}}">Logout</a>
+<div style="margin-left: 30px;">
+    <h3 >Usuários</h3>
+    <a class="btn btn-success"  href="{{url_for('register')}}">Cadastrar Um Novo Usuário</a>
+    <h3>Objetos</h3>
+    <a class="btn btn-primary" href="{{url_for('upload_file')}}">Cadastrar novo objeto</a>
+    <a class="btn btn-warning" href="{{url_for('manage')}}">Gerenciar Objetos</a>
+    <a class="btn btn-primary" href="{{url_for('found')}}">Objetos Devolvidos</a>
+</div>
 {% endblock %}

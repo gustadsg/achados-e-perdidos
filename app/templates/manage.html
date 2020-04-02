@@ -2,25 +2,25 @@
 
 {%block title%}{{super()}} | Manage{% endblock %}
 
+{% block logout %}<a class="btn btn-danger" href="{{url_for('logout')}}">Logout</a>{% endblock %}
+
 {% block content %}
 
 <div class="container">
-    <h1>Manage</h1> 
+    <h1>Gerenciar</h1> 
     {% if posts ==[] %}
     <div class="card col-md">
         <h2>Não há postagens para serem gerenciadas</h2>
     </div>
     {% else %}
     {% for item in posts %}
-    <div class="card col-md-4 " style="display: inline-block;">
-        <div class="image">
-            <img src="/static/images/{{ item.image_path }}" width="150px" height="150px">
+    <div class="card d-inline-block" style="width: 17rem">
+        <img class="card-img-top" src="/static/images/{{ item.image_path }}" >
+        <div class="card-body">
+            <p class="card-text"><img src="/static/svg/location-pin.svg" width="18px" alt="Local"> {{ item.content }}</p>
         </div>
-        <div class="content">
-            <p>Local: {{ item.content }}</p>
-        </div>
-        <a href="{{url_for('delete')}}{{item.id}}" >Delete</a>
-        <a href="{{url_for('find')}}{{item.id}}">Find</a>
+        <a class="btn btn-danger col-md-5" href="{{url_for('delete')}}{{item.id}}" >Deletar</a>
+        <a class="btn btn-success col-md-5" href="{{url_for('find')}}{{item.id}}" >Devolver</a>
     </div>
     
     {% endfor %}
